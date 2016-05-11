@@ -7,7 +7,12 @@ float [] cloudY = new float[amt];
 float [] speed = new float[amt];
 
 float planeX = -100;
+float planeY = 150;
 float planeS = 3;
+
+float boxX;
+float boxY;
+float boxS = 3;
 
 void setup()
 {
@@ -37,7 +42,7 @@ void setup()
 
 void draw()
 {
-  background(0,50,155);
+    world();
   
     for(int i = 0; i < startX.length; i++)
     {
@@ -47,11 +52,11 @@ void draw()
       
       if(startX[i] + cloudR[i] * 3 < 0)
       {
-       startX[i] = width;
+       startX[i] = width + cloudR[i] * 3;
       }
     }
     
-    plane(planeX, height * 0.25f);
+    plane(planeX,planeY);
     
     planeX += planeS;
     
@@ -59,16 +64,20 @@ void draw()
     {
       planeX = -100;
     }
-  
-  
+    
+    if(key == ' ')
+    {
+      
+    }
 }
 
 void drawCloud(float x,float y, float r)
 {
+  //this gives the clouds different sizes
   float centerC = r * 3;
   float cloudW = r * 2;
 
-  fill(255);
+  fill(255,255,255,250);
   //cloud shape
   ellipse(x + r, y, cloudW, cloudW);
   ellipse(x,y,centerC,centerC);
@@ -95,8 +104,14 @@ void plane(float x, float y)
  // ellipse(x-40,y + 10,25,5);
   quad(x-10,y+10,x - 20, y+ 15, x - 10, y + 30, x + 30,y+10);
   triangle(x - 60,y,x -30, y+10, x - 50, y + 20);
-  
+}
 
- 
+void world()
+{
+  //sky and ground
+  background(0,50,155);
+  fill(30,155,20);
+  rect(0,height * 0.75f,width, height * 0.75f);
   
+  //person
 }
