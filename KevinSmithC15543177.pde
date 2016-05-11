@@ -14,6 +14,15 @@ float boxX;
 float boxY;
 float boxS = 3;
 
+float playerX = 100;
+float playerY = 400;
+
+Player player = new Player(100,420,20,60);
+
+Box box;
+
+
+
 void setup()
 {
   size(900 ,600);
@@ -42,7 +51,31 @@ void setup()
 
 void draw()
 {
+  
+   
     world();
+    
+    player.update();
+
+    
+    if(key ==' ')
+    {
+      boxX = planeX;
+      box = new Box(boxX,boxY,20,20);
+      
+      if(boxY < height * 0.8f)
+      {
+        boxY += boxS;
+        
+      }
+      
+      box.update();
+      
+    }
+    
+    else
+    boxY = 150;
+    
   
     for(int i = 0; i < startX.length; i++)
     {
@@ -63,11 +96,6 @@ void draw()
     if(planeX - 80 > width)
     {
       planeX = -100;
-    }
-    
-    if(key == ' ')
-    {
-      
     }
 }
 
@@ -106,12 +134,11 @@ void plane(float x, float y)
   triangle(x - 60,y,x -30, y+10, x - 50, y + 20);
 }
 
+
 void world()
 {
   //sky and ground
   background(0,50,155);
   fill(30,155,20);
   rect(0,height * 0.75f,width, height * 0.75f);
-  
-  //person
 }
