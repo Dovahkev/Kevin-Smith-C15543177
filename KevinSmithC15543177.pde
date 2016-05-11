@@ -26,7 +26,7 @@ void setup()
     
     for(int i = 0; i < cloudY.length; i++)
     {
-      cloudY[i] = random(50,height * 0.3f);
+      cloudY[i] = random(50,height * 0.25f);
     }
     
     for(int i = 0; i < speed.length; i++)
@@ -92,7 +92,9 @@ void plane(float x, float y)
   
   //shadows+highlights
   fill(155,0,0);
-  ellipse(x-40,y + 10,40,10);
+ // ellipse(x-40,y + 10,25,5);
+  quad(x-10,y+10,x - 20, y+ 15, x - 10, y + 30, x + 30,y+10);
+  triangle(x - 60,y,x -30, y+10, x - 50, y + 20);
   
 
  
